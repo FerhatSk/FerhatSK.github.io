@@ -1,56 +1,145 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Ana Sayfa | Ferhat Işık</title>
+<meta charset="UTF-8">
+<title>Ana Sayfa | Ferhat Işık</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background-color:#f5f5f5;
+}
+
+.container{
+max-width:1000px;
+margin:40px auto;
+background-color:white;
+}
+
+nav ul{
+background:#333;
+padding:10px;
+margin:0;
+}
+
+nav ul li{
+display:inline-block;
+margin-right:15px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+nav a:hover{
+color:yellow;
+}
+
+header{
+background:#f2f2f2;
+padding:20px;
+}
+
+main{
+display:flex;
+justify-content:space-between;
+padding:20px;
+}
+
+.content{
+width:65%;
+background:#e8f4ff;
+padding:15px;
+border:2px solid red;
+}
+
+.yan{
+width:30%;
+background:#fff3e6;
+padding:15px;
+border:2px solid red;
+}
+
+footer{
+background:#333;
+color:white;
+text-align:center;
+padding:10px;
+}
+
+h1,h2,p{
+margin-bottom:10px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Ferhat Işık</h1>
-        <p>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</p>
-    </header>
+<div class="container">
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
-            <li><a href="contact.html">İletişim</a></li>
-        </ul>
-    </nav>
+<header>
+<h1>Ferhat Işık</h1>
+<p>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</p>
+</header>
 
-    <main>
-        <section>
-            <h2>Hoş Geldiniz</h2>
-            <p>Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış <strong>örnek bir kişisel tanıtım sayfasıdır.</strong> Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.</p>
-            <p>Daha fazla bilgi için <em>Hakkımda</em> sayfasını ziyaret edebilirsiniz.</p>
-        </section>
+<nav>
+<ul>
+<li><a href="index.html">Ana Sayfa</a></li>
+<li><a href="about.html">Hakkımda</a></li>
+<li><a href="interests.html">İlgi Alanlarım</a></li>
+<li><a href="contact.html">İletişim</a></li>
+</ul>
+</nav>
 
-        <section id="hizli-bilgiler">
-            <h2>Hızlı Bilgiler</h2>
-            <ul>
-                <li>Üniversite: Marmara Üniversitesi</li>
-                <li>Bölüm: Bilgisayar Mühendisliği</li>
-            </ul>
-        </section>
+<main>
 
-        <section>
-            <h2 id="hedef">Öğrenme Hedeflerim</h2>
-            <ol>
-                <li>HTML temellerini öğrenmek</li>
-                <li>CSS ile sayfa tasarlamak</li>
-                <li>JavaScript ile etkileşim eklemek</li>
-            </ol>
-        </section>
+<div class="content">
 
-        
-    </main>
+<h2>Hoş Geldiniz</h2>
 
-    <footer>
-        <p>&copy; 2026 | Ferhat Işık | Tüm Hakları Saklıdır.</p>
-    </footer>
+<p>
+Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış 
+<strong>örnek bir kişisel tanıtım sayfasıdır.</strong>
+Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.
+</p>
+
+<p>
+Daha fazla bilgi için <em>Hakkımda</em> sayfasını ziyaret edebilirsiniz.
+</p>
+
+<h2 id="hedef">Öğrenme Hedeflerim</h2>
+
+<ol>
+<li>HTML temellerini öğrenmek</li>
+<li>CSS ile sayfa tasarlamak</li>
+<li>JavaScript ile etkileşim eklemek</li>
+</ol>
+
+</div>
+
+<aside class="yan">
+
+<h2>Hızlı Bilgiler</h2>
+
+<ul>
+<li>Üniversite: Marmara Üniversitesi</li>
+<li>Bölüm: Bilgisayar Mühendisliği</li>
+</ul>
+
+</aside>
+
+</main>
+
+<footer>
+<p>&copy; 2026 | Ferhat Işık | Tüm Hakları Saklıdır.</p>
+</footer>
+
+</div>
 
 </body>
-
 </html>
