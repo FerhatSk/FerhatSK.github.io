@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Lab</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Ana yapı */
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Navbar */
+        .navbar {
+            height: 10vh;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            background: #333;
+            color: white;
+        }
+
+        .menu a {
+            margin-left: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            height: 30vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            padding: 10px;
+        }
+
+        .hero-text {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #FCA5A5;
+            padding: 10px;
+        }
+
+        .hero-text button {
+            margin-top: 10px;
+            padding: 8px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: lightgray;
+        }
+
+        /* Kartlar */
+        .cards {
+            height: 30vh;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card {
+            flex: 1 1 calc(33.33% - 10px);
+            background: #4CAF50;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card button {
+            padding: 6px 10px;
+            border: none;
+            background: white;
+            color: #4CAF50;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #ddd;
+        }
+
+        /* Flex Grow */
+        .grow {
+            height: 20vh;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .box1 {
+            flex-grow: 1;
+            background: #2196F3;
+        }
+
+        .box2 {
+            flex-grow: 2;
+            background: #f44336;
+        }
+
+        .box3 {
+            flex-grow: 1;
+            background: #ff9800;
+        }
+
+        /* Footer */
+        .footer {
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">LOGO</div>
+        <div class="menu">
+            <a href="#">Ana Sayfa</a>
+            <a href="#">Hakkında</a>
+            <a href="#">Hizmetler</a>
+            <a href="#">İletişim</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Flexbox Ödevi</h1>
+            <button>Başla</button>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Kartlar -->
+    <section class="cards">
+        <div class="card"><p>Kart 1</p><button>Detay</button></div>
+        <div class="card"><p>Kart 2</p><button>Detay</button></div>
+        <div class="card"><p>Kart 3</p><button>Detay</button></div>
+        <div class="card"><p>Kart 4</p><button>Detay</button></div>
+        <div class="card"><p>Kart 5</p><button>Detay</button></div>
+        <div class="card"><p>Kart 6</p><button>Detay</button></div>
+    </section>
+
+    <!-- Flex Grow -->
+    <section class="grow">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Flexbox Lab</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
