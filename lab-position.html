@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Etkinlik Duyurusu</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            background: teal;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: darkcyan;
+        }
+
+        .fixed-help {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: crimson;
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .fixed-help:hover {
+            background: darkred;
+            transform: scale(1.1);
+        }
+
+        /* CARD */
+        .card {
+            position: relative; /* ÖNEMLİ */
+            width: 500px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            transition: 0.3s;
+        }
+
+        /* BADGES */
+        .badge {
+            position: absolute;
+            background: orange;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .badge:hover {
+            background: darkorange;
+        }
+
+        .badge1 { top: 10px; left: 10px; }
+        .badge2 { top: 10px; right: 10px; }
+        .badge3 { bottom: 10px; left: 10px; }
+
+        /* BUTTON - ARTIK ABSOLUTE */
+        .btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+
+            padding: 10px 20px;
+            background: teal;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+
+            animation: moveUpDown 1.5s infinite;
+        }
+
+        .btn:hover {
+            background: darkcyan;
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes moveUpDown {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="back-btn">Ana Sayfa</a>
+    <h1>Kampüs Etkinliği</h1>
+</header>
+
+<div class="card">
+
+    <div class="badge badge1">Ücretsiz</div>
+    <div class="badge badge2">Yeni</div>
+    <div class="badge badge3">Sınırlı Kontenjan</div>
+
+    <h2>Yazılım Topluluğu Buluşması</h2>
+    <p>
+        Üniversitemizin yazılım topluluğu tarafından düzenlenen bu etkinlikte
+        sektör profesyonelleri ile tanışma fırsatı yakalayacaksınız.
+    </p>
+
+    <a class="btn">Kayıt Ol</a>
+
+</div>
+
+<div class="fixed-help">?</div>
+
+<footer>
+    © MARMARA ÜNİVERSİTESİ
+</footer>
+
+</body>
+</html>
