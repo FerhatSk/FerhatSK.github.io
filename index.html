@@ -1,149 +1,305 @@
 <!DOCTYPE html>
 <html lang="tr">
-
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ana Sayfa | Ferhat Işık</title>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+:root{
+    --accent:#1e3a5f;
+    --accent-soft:#e8eef5;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --bg:#ffffff;
+    --bg-alt:#f8fafc;
+    --border:#e5e7eb;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
 
 body{
-font-family: Arial;
-margin:0;
-background-color:#f5f5f5;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--text);
+    background:var(--bg-alt);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
 }
 
 .container{
-max-width:1000px;
-margin:40px auto;
-background-color:white;
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
 }
 
-nav ul{
-background:#333;
-padding:10px;
-margin:0;
+/* Navigation */
+.navbar{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
-nav ul li{
-display:inline-block;
-margin-right:15px;
+.nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
 }
 
-nav a{
-color:white;
-text-decoration:none;
+.brand{
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--accent);
+    text-decoration:none;
+    letter-spacing:-0.01em;
 }
 
-nav a:hover{
-color:yellow;
+.nav-links{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
 }
 
-header{
-background:#f2f2f2;
-padding:20px;
+.nav-links a{
+    color:var(--text);
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:background-color 0.15s ease,color 0.15s ease;
 }
 
-main{
-display:flex;
-justify-content:space-between;
-padding:20px;
+.nav-links a:hover{
+    background:var(--accent-soft);
+    color:var(--accent);
 }
 
-.content{
-width:65%;
-background:#e8f4ff;
-padding:15px;
-border:2px solid red;
+.nav-links a.active{
+    background:var(--accent);
+    color:#fff;
 }
 
-.yan{
-width:30%;
-background:#fff3e6;
-padding:15px;
-border:2px solid red;
+/* Hero */
+.hero{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:72px 0 64px;
 }
 
-footer{
-background:#333;
-color:white;
-text-align:center;
-padding:10px;
+.hero .container{
+    text-align:center;
 }
 
-h1,h2,p{
-margin-bottom:10px;
+.hero h1{
+    font-size:clamp(2rem,4.5vw,2.75rem);
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:-0.02em;
+    margin-bottom:12px;
 }
 
+.hero .subtitle{
+    color:var(--muted);
+    font-size:1.05rem;
+    margin-bottom:24px;
+}
+
+.btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#fff;
+    text-decoration:none;
+    padding:10px 22px;
+    border-radius:8px;
+    font-weight:500;
+    font-size:0.95rem;
+    transition:background-color 0.15s ease;
+}
+
+.btn:hover{
+    background:#152a47;
+}
+
+/* Page sections */
+.page{
+    padding:56px 0;
+}
+
+.section-title{
+    font-size:1.5rem;
+    font-weight:600;
+    color:var(--accent);
+    margin-bottom:20px;
+    letter-spacing:-0.01em;
+}
+
+.card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+    margin-bottom:20px;
+}
+
+.card p{
+    color:var(--text);
+    margin-bottom:12px;
+}
+
+.card p:last-child{margin-bottom:0;}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+}
+
+.info-list{
+    list-style:none;
+}
+
+.info-list li{
+    padding:10px 0;
+    border-bottom:1px solid var(--border);
+    color:var(--text);
+    font-size:0.95rem;
+}
+
+.info-list li:last-child{border-bottom:none;}
+
+.info-list strong{
+    color:var(--muted);
+    font-weight:500;
+    display:block;
+    font-size:0.8rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    margin-bottom:2px;
+}
+
+ol.goals{
+    list-style:none;
+    counter-reset:goals;
+}
+
+ol.goals li{
+    counter-increment:goals;
+    padding:10px 0 10px 36px;
+    position:relative;
+    color:var(--text);
+}
+
+ol.goals li::before{
+    content:counter(goals);
+    position:absolute;
+    left:0;
+    top:10px;
+    width:24px;
+    height:24px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    font-weight:600;
+}
+
+/* Footer */
+.footer{
+    background:var(--bg);
+    border-top:1px solid var(--border);
+    padding:24px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.88rem;
+}
+
+/* Responsive */
+@media (max-width:768px){
+    .grid-2{grid-template-columns:1fr;}
+    .nav-inner{justify-content:center;}
+    .hero{padding:48px 0 40px;}
+    .page{padding:40px 0;}
+    .card{padding:22px;}
+}
 </style>
 </head>
-
 <body>
 
-<div class="container">
-
-<header>
-<h1>Ferhat Işık</h1>
-<p>Bilgisayar Mühendisliği | Web Programlama Öğrencisi</p>
-</header>
-
-<nav>
-<ul>
-<li><a href="index.html">Ana Sayfa</a></li>
-<li><a href="about.html">Hakkımda</a></li>
-<li><a href="interests.html">İlgi Alanlarım</a></li>
-<li><a href="contact.html">İletişim</a></li>
-<li><a href="flexbox.html">Flexbox</a></li>
-<li><a href="labposition.html">Position</a></li>  
-<li><a href="hafta7.html">Hafta7 Uygulaması</a></li>  
-  
-</ul>
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">Ferhat Işık</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Ana Sayfa</a></li>
+            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="interests.html">İlgi Alanlarım</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="labposition.html">Position</a></li>
+            <li><a href="hafta7.html">Hafta 7</a></li>
+        </ul>
+    </div>
 </nav>
 
-<main>
+<section class="hero">
+    <div class="container">
+        <h1>Ferhat Işık</h1>
+        <p class="subtitle">Bilgisayar Mühendisliği &middot; Web Programlama Öğrencisi</p>
+        <a href="about.html" class="btn">Hakkımda &rarr;</a>
+    </div>
+</section>
 
-<div class="content">
+<section class="page">
+    <div class="container">
+        <div class="grid-2">
+            <div>
+                <h2 class="section-title">Hoş Geldiniz</h2>
+                <div class="card">
+                    <p>Bu web sitesi, <strong>Web Programlama</strong> dersi kapsamında hazırlanmış örnek bir kişisel tanıtım sayfasıdır. Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.</p>
+                    <p>Daha fazla bilgi için <a href="about.html" style="color:var(--accent);">Hakkımda</a> sayfasını ziyaret edebilirsiniz.</p>
+                </div>
 
-<h2>Hoş Geldiniz</h2>
+                <h2 class="section-title" id="hedef" style="margin-top:36px;">Öğrenme Hedeflerim</h2>
+                <div class="card">
+                    <ol class="goals">
+                        <li>HTML temellerini öğrenmek</li>
+                        <li>CSS ile sayfa tasarlamak</li>
+                        <li>JavaScript ile etkileşim eklemek</li>
+                    </ol>
+                </div>
+            </div>
 
-<p>
-Bu web sitesi, Web Programlama dersi kapsamında hazırlanmış 
-<strong>örnek bir kişisel tanıtım sayfasıdır.</strong>
-Amaç, HTML'in temel etiketlerini ve sayfa yapısını öğrenmektir.
-</p>
+            <aside>
+                <h2 class="section-title">Hızlı Bilgiler</h2>
+                <div class="card">
+                    <ul class="info-list">
+                        <li><strong>Üniversite</strong>Marmara Üniversitesi</li>
+                        <li><strong>Bölüm</strong>Bilgisayar Mühendisliği</li>
+                        <li><strong>Ders</strong>Web Programlama</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>
 
-<p>
-Daha fazla bilgi için <em>Hakkımda</em> sayfasını ziyaret edebilirsiniz.
-</p>
-
-<h2 id="hedef">Öğrenme Hedeflerim</h2>
-
-<ol>
-<li>HTML temellerini öğrenmek</li>
-<li>CSS ile sayfa tasarlamak</li>
-<li>JavaScript ile etkileşim eklemek</li>
-</ol>
-
-</div>
-
-<aside class="yan">
-
-<h2>Hızlı Bilgiler</h2>
-
-<ul>
-<li>Üniversite: Marmara Üniversitesi</li>
-<li>Bölüm: Bilgisayar Mühendisliği</li>
-</ul>
-
-</aside>
-
-</main>
-
-<footer>
-<p>&copy; 2026 | Ferhat Işık | Tüm Hakları Saklıdır.</p>
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Ferhat Işık &middot; Tüm Hakları Saklıdır</p>
+    </div>
 </footer>
-
-</div>
 
 </body>
 </html>

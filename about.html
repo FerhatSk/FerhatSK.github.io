@@ -1,49 +1,344 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Hakkımda | Tolga Ertek</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hakkımda | Ferhat Işık</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --accent:#1e3a5f;
+    --accent-soft:#e8eef5;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --bg:#ffffff;
+    --bg-alt:#f8fafc;
+    --border:#e5e7eb;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--text);
+    background:var(--bg-alt);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+/* Navigation */
+.navbar{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.brand{
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--accent);
+    text-decoration:none;
+    letter-spacing:-0.01em;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+}
+
+.nav-links a{
+    color:var(--text);
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:background-color 0.15s ease,color 0.15s ease;
+}
+
+.nav-links a:hover{
+    background:var(--accent-soft);
+    color:var(--accent);
+}
+
+.nav-links a.active{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* Page header */
+.page-header{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:48px 0;
+    text-align:center;
+}
+
+.page-header h1{
+    font-size:clamp(1.75rem,4vw,2.25rem);
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:-0.02em;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:1rem;
+}
+
+/* Sections */
+.page{padding:48px 0;}
+
+.section{margin-bottom:40px;}
+
+.section-title{
+    font-size:1.4rem;
+    font-weight:600;
+    color:var(--accent);
+    margin-bottom:16px;
+    letter-spacing:-0.01em;
+}
+
+.card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:28px;
+}
+
+.card p{margin-bottom:12px;}
+.card p:last-child{margin-bottom:0;}
+
+/* Education list */
+.edu-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.edu-list li{
+    padding:14px 18px;
+    background:var(--bg-alt);
+    border-left:3px solid var(--accent);
+    border-radius:6px;
+    font-size:0.95rem;
+}
+
+/* Skills grid */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+    gap:14px;
+}
+
+.skill-box{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:18px 14px;
+    text-align:center;
+    font-weight:500;
+    color:var(--text);
+    transition:border-color 0.15s ease,transform 0.15s ease;
+}
+
+.skill-box:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+.skill-icon{
+    font-size:1.6rem;
+    margin-bottom:8px;
+    color:var(--accent);
+}
+
+/* Quote */
+.quote{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    padding:20px 24px;
+    border-radius:8px;
+    font-style:italic;
+    color:var(--text);
+}
+
+/* Numbered list */
+ol.goals{
+    list-style:none;
+    counter-reset:goals;
+}
+
+ol.goals li{
+    counter-increment:goals;
+    padding:10px 0 10px 36px;
+    position:relative;
+}
+
+ol.goals li::before{
+    content:counter(goals);
+    position:absolute;
+    left:0;
+    top:10px;
+    width:24px;
+    height:24px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    font-weight:600;
+}
+
+/* Back link */
+.back{
+    display:inline-block;
+    margin-top:8px;
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.95rem;
+}
+
+.back:hover{text-decoration:underline;}
+
+/* Footer */
+.footer{
+    background:var(--bg);
+    border-top:1px solid var(--border);
+    padding:24px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.88rem;
+}
+
+/* Responsive */
+@media (max-width:768px){
+    .nav-inner{justify-content:center;}
+    .page-header{padding:36px 0;}
+    .page{padding:36px 0;}
+    .card{padding:22px;}
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>Hakkımda</h1>
-        <p>Kendimi ve hedeflerimi tanıttığım sayfa</p>
-    </header>
 
-    <nav>
-        <ul>
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">Ferhat Işık</a>
+        <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
-            <li><a href="about.html">Hakkımda</a></li>
+            <li><a href="about.html" class="active">Hakkımda</a></li>
             <li><a href="interests.html">İlgi Alanlarım</a></li>
             <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="labposition.html">Position</a></li>
+            <li><a href="hafta7.html">Hafta 7</a></li>
         </ul>
-    </nav>
+    </div>
+</nav>
 
-    <main>
-        <h3>Ben Kimim?</h3>
-        <p>Merhaba, ben <strong>Bilgisayar Mühendisliği öğrencisiyim.</strong> Web teknolojilerine ilgi duyuyor ve kendimi bu alanda geliştirmeyi hedefliyorum.</p>
-        <p>Özellikle <em>frontend geliştirme</em> ve kullanıcı deneyimi konularında çalışmalar yapmayı seviyorum.</p>
+<header class="page-header">
+    <div class="container">
+        <h1>Hakkımda</h1>
+        <p>Kendimi ve hedeflerimi tanıttığım sayfa</p>
+    </div>
+</header>
 
-        <h3>Eğitim Bilgilerim</h3>
-        <ul>
-            <li>Marmara Üniversitesi</li>
-            <li>Bilgisayar Mühendisliği</li>
-            <li>Web Programlama Dersi</li>
-        </ul>
+<main class="page">
+    <div class="container">
 
-        <h3>Motivasyon</h3>
-        <blockquote cite="https://example.com">
-            "İyi yazılmış bir web sitesi, hem kullanıcıyı hem geliştiriciyi mutlu eder."
-        </blockquote>
+        <section class="section">
+            <h2 class="section-title">Ben Kimim?</h2>
+            <div class="card">
+                <p>Merhaba, ben <strong>Bilgisayar Mühendisliği öğrencisiyim.</strong> Web teknolojilerine ilgi duyuyor ve kendimi bu alanda geliştirmeyi hedefliyorum.</p>
+                <p>Özellikle <em>frontend geliştirme</em> ve kullanıcı deneyimi konularında çalışmalar yapmayı seviyorum.</p>
+            </div>
+        </section>
 
-        <h3>Hedeflerim</h3>
-        <ol>
-            <li>Modern web teknolojilerini öğrenmek</li>
-            <li>Responsive tasarım geliştirmek</li>
-            <li>ASP.NET Core ile dinamik uygulamalar yazmak</li>
-        </ol>
+        <section class="section">
+            <h2 class="section-title">Eğitim Bilgilerim</h2>
+            <div class="card">
+                <ul class="edu-list">
+                    <li><strong>Marmara Üniversitesi</strong> &middot; Bilgisayar Mühendisliği</li>
+                    <li><strong>Web Programlama</strong> &middot; Lisans Dersi</li>
+                </ul>
+            </div>
+        </section>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
-    </main>
+        <section class="section">
+            <h2 class="section-title">Teknik Yeteneklerim</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-icon">&#9749;</div>
+                    Java
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">&#129520;</div>
+                    Object-Oriented Programming
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">&#60;/&#62;</div>
+                    HTML
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">&#127912;</div>
+                    CSS
+                </div>
+                <div class="skill-box">
+                    <div class="skill-icon">&#9889;</div>
+                    JavaScript
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Hedeflerim</h2>
+            <div class="card">
+                <ol class="goals">
+                    <li>Modern web teknolojilerini öğrenmek</li>
+                    <li>Responsive tasarım geliştirmek</li>
+                    <li>ASP.NET Core ile dinamik uygulamalar yazmak</li>
+                </ol>
+            </div>
+        </section>
+
+        <a href="index.html" class="back">&larr; Ana sayfaya geri dön</a>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Ferhat Işık &middot; Tüm Hakları Saklıdır</p>
+    </div>
+</footer>
+
 </body>
 </html>

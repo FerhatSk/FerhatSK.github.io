@@ -1,58 +1,392 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>İlgi Alanlarım | Ferhat Işık</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>İlgi Alanlarım | Ferhat Işık</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --accent:#1e3a5f;
+    --accent-soft:#e8eef5;
+    --text:#1f2937;
+    --muted:#6b7280;
+    --bg:#ffffff;
+    --bg-alt:#f8fafc;
+    --border:#e5e7eb;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    color:var(--text);
+    background:var(--bg-alt);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+}
+
+.container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
+}
+
+/* Navigation */
+.navbar{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:14px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.brand{
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--accent);
+    text-decoration:none;
+    letter-spacing:-0.01em;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:4px;
+}
+
+.nav-links a{
+    color:var(--text);
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:0.92rem;
+    font-weight:500;
+    transition:background-color 0.15s ease,color 0.15s ease;
+}
+
+.nav-links a:hover{
+    background:var(--accent-soft);
+    color:var(--accent);
+}
+
+.nav-links a.active{
+    background:var(--accent);
+    color:#fff;
+}
+
+/* Page header */
+.page-header{
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+    padding:48px 0;
+    text-align:center;
+}
+
+.page-header h1{
+    font-size:clamp(1.75rem,4vw,2.25rem);
+    font-weight:700;
+    color:var(--accent);
+    letter-spacing:-0.02em;
+    margin-bottom:8px;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:1rem;
+}
+
+/* Page sections */
+.page{padding:48px 0;}
+
+.section{margin-bottom:40px;}
+
+.section-title{
+    font-size:1.4rem;
+    font-weight:600;
+    color:var(--accent);
+    margin-bottom:16px;
+    letter-spacing:-0.01em;
+}
+
+.card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:24px;
+}
+
+/* Interests grid */
+.interest-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:16px;
+}
+
+.interest-item{
+    background:var(--bg);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:22px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    transition:border-color 0.15s ease,transform 0.15s ease;
+}
+
+.interest-item:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+}
+
+.interest-icon{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:var(--accent-soft);
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.3rem;
+    flex-shrink:0;
+}
+
+.interest-text h4{
+    font-size:1rem;
+    font-weight:600;
+    color:var(--text);
+    margin-bottom:4px;
+}
+
+.interest-text p{
+    font-size:0.88rem;
+    color:var(--muted);
+    line-height:1.5;
+}
+
+/* Tech tags */
+.tech-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:0.85rem;
+    font-weight:500;
+}
+
+/* Numbered list */
+ol.routine{
+    list-style:none;
+    counter-reset:routine;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:12px;
+}
+
+ol.routine li{
+    counter-increment:routine;
+    background:var(--bg-alt);
+    padding:14px 16px 14px 50px;
+    border-radius:8px;
+    position:relative;
+    font-size:0.95rem;
+}
+
+ol.routine li::before{
+    content:counter(routine);
+    position:absolute;
+    left:14px;
+    top:50%;
+    transform:translateY(-50%);
+    width:26px;
+    height:26px;
+    background:var(--accent);
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:0.8rem;
+    font-weight:600;
+}
+
+/* Glossary */
+.glossary dt{
+    font-weight:600;
+    color:var(--accent);
+    margin-bottom:4px;
+    font-size:0.95rem;
+}
+
+.glossary dd{
+    color:var(--text);
+    margin-bottom:14px;
+    padding-left:14px;
+    border-left:2px solid var(--accent-soft);
+    font-size:0.92rem;
+}
+
+.glossary dd:last-child{margin-bottom:0;}
+
+/* Back link */
+.back{
+    display:inline-block;
+    margin-top:8px;
+    color:var(--accent);
+    text-decoration:none;
+    font-weight:500;
+    font-size:0.95rem;
+}
+
+.back:hover{text-decoration:underline;}
+
+/* Footer */
+.footer{
+    background:var(--bg);
+    border-top:1px solid var(--border);
+    padding:24px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.88rem;
+}
+
+/* Responsive */
+@media (max-width:768px){
+    .nav-inner{justify-content:center;}
+    .page-header{padding:36px 0;}
+    .page{padding:36px 0;}
+    .card{padding:20px;}
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>İlgi Alanlarım</h1>
-        <p>Teknoloji ve kişisel ilgi alanlarım</p>
-    </header>
 
-    <nav>
-        <ul>
+<nav class="navbar">
+    <div class="nav-inner">
+        <a href="index.html" class="brand">Ferhat Işık</a>
+        <ul class="nav-links">
             <li><a href="index.html">Ana Sayfa</a></li>
             <li><a href="about.html">Hakkımda</a></li>
-            <li><a href="interests.html">İlgi Alanlarım</a></li>
+            <li><a href="interests.html" class="active">İlgi Alanlarım</a></li>
             <li><a href="contact.html">İletişim</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="labposition.html">Position</a></li>
+            <li><a href="hafta7.html">Hafta 7</a></li>
         </ul>
-    </nav>
+    </div>
+</nav>
 
-    <main>
-        <h3>Teknoloji Alanındaki İlgi Alanlarım</h3>
-        <ul>
-            <li>Web geliştirme</li>
-            <li>Yapay zekâ uygulamaları</li>
-            <li>Mobil uygulama geliştirme</li>
-            <li>Öğrenmek istediğim teknolojiler
-                <ul>
-                    <li>React</li>
-                    <li>ASP.NET Core</li>
-                    <li>Flutter</li>
-                </ul>
-            </li>
-        </ul>
+<header class="page-header">
+    <div class="container">
+        <h1>İlgi Alanlarım</h1>
+        <p>Teknoloji ve kişisel ilgi alanlarım</p>
+    </div>
+</header>
 
-        <h3>Günlük Çalışma Rutinim</h3>
-        <ol>
-            <li>Ders materyallerini gözden geçirmek</li>
-            <li>Kodlama pratiği yapmak</li>
-            <li>Yeni teknolojiler araştırmak</li>
-            <li>Proje geliştirmek</li>
-        </ol>
+<main class="page">
+    <div class="container">
 
-        <h3>Web Teknolojileri Sözlüğü</h3>
-        <dl>
-            <dt>HTML</dt>
-            <dd>Web sayfalarının iskeletini oluşturan işaretleme dilidir.</dd>
-            <dt>CSS</dt>
-            <dd>Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</dd>
-            <dt>JavaScript</dt>
-            <dd>Web sayfalarına etkileşim kazandıran programlama dilidir.</dd>
-        </dl>
+        <section class="section">
+            <h2 class="section-title">Teknoloji Alanındaki İlgi Alanlarım</h2>
+            <div class="interest-grid">
+                <div class="interest-item">
+                    <div class="interest-icon">&#127760;</div>
+                    <div class="interest-text">
+                        <h4>Web Geliştirme</h4>
+                        <p>Modern ve responsive arayüzler tasarlamak.</p>
+                    </div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">&#129504;</div>
+                    <div class="interest-text">
+                        <h4>Yapay Zekâ</h4>
+                        <p>AI uygulamaları ve makine öğrenmesi.</p>
+                    </div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">&#128241;</div>
+                    <div class="interest-text">
+                        <h4>Mobil Uygulama</h4>
+                        <p>Çapraz platform mobil geliştirme.</p>
+                    </div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-icon">&#128218;</div>
+                    <div class="interest-text">
+                        <h4>Sürekli Öğrenme</h4>
+                        <p>Yeni teknolojileri keşfetmek ve denemek.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <p><a href="index.html">&larr; Ana sayfaya geri dön</a></p>
-    </main>
+        <section class="section">
+            <h2 class="section-title">Öğrenmek İstediğim Teknolojiler</h2>
+            <div class="card">
+                <div class="tech-tags">
+                    <span class="tag">React</span>
+                    <span class="tag">ASP.NET Core</span>
+                    <span class="tag">Flutter</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">TypeScript</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Günlük Çalışma Rutinim</h2>
+            <ol class="routine">
+                <li>Ders materyallerini gözden geçirmek</li>
+                <li>Kodlama pratiği yapmak</li>
+                <li>Yeni teknolojiler araştırmak</li>
+                <li>Proje geliştirmek</li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Web Teknolojileri Sözlüğü</h2>
+            <div class="card">
+                <dl class="glossary">
+                    <dt>HTML</dt>
+                    <dd>Web sayfalarının iskeletini oluşturan işaretleme dilidir.</dd>
+                    <dt>CSS</dt>
+                    <dd>Web sayfalarının görsel tasarımını düzenlemek için kullanılır.</dd>
+                    <dt>JavaScript</dt>
+                    <dd>Web sayfalarına etkileşim kazandıran programlama dilidir.</dd>
+                </dl>
+            </div>
+        </section>
+
+        <a href="index.html" class="back">&larr; Ana sayfaya geri dön</a>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Ferhat Işık &middot; Tüm Hakları Saklıdır</p>
+    </div>
+</footer>
+
 </body>
 </html>
